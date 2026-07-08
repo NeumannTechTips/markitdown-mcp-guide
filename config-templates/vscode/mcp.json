@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "markitdown": {
+      "command": "uvx",
+      "args": ["markitdown-mcp"]
+    }
+  }
+}

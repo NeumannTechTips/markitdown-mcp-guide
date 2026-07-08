@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 660" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9fc"/><stop offset="1" stop-color="#eef2f8"/></linearGradient>
+    <linearGradient id="barRaw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ef9a9a"/><stop offset="1" stop-color="#e57373"/></linearGradient>
+    <linearGradient id="barMd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#81c784"/><stop offset="1" stop-color="#4caf50"/></linearGradient>
+    <filter id="soft3" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3a4a5a" flood-opacity="0.16"/></filter>
+  </defs>
+  <rect width="1100" height="660" fill="url(#bg3)"/>
+  <text x="550" y="46" text-anchor="middle" font-size="24" font-weight="700" fill="#1a2733">Why Convert at the Boundary? The Token-Efficiency Case</text>
+  <text x="550" y="70" text-anchor="middle" font-size="13" fill="#566573">Markdown is close to plain text, structurally rich, and natively understood by LLMs</text>
+
+  <!-- Bar comparison -->
+  <rect x="60" y="100" width="430" height="320" rx="12" fill="#ffffff" stroke="#cfd8e3" filter="url(#soft3)"/>
+  <text x="275" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#1565c0">Tokens per Document (illustrative)</text>
+  <line x1="110" y1="370" x2="450" y2="370" stroke="#b8c2cd" stroke-width="1.5"/>
+  <!-- Raw bar -->
+  <rect x="150" y="170" width="90" height="200" rx="6" fill="url(#barRaw)"/>
+  <text x="195" y="160" text-anchor="middle" font-size="13" font-weight="700" fill="#c0392b">~100%</text>
+  <text x="195" y="392" text-anchor="middle" font-size="12.5" fill="#44525e">Raw HTML /</text>
+  <text x="195" y="408" text-anchor="middle" font-size="12.5" fill="#44525e">Office markup</text>
+  <!-- MD bar -->
+  <rect x="320" y="290" width="90" height="80" rx="6" fill="url(#barMd)"/>
+  <text x="365" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#2e7d32">~30–40%</text>
+  <text x="365" y="392" text-anchor="middle" font-size="12.5" fill="#44525e">Clean</text>
+  <text x="365" y="408" text-anchor="middle" font-size="12.5" fill="#44525e">Markdown</text>
+  <text x="275" y="438" text-anchor="middle" font-size="11" fill="#7a8a99" font-style="italic">Reported field tests show ~30–70% reduction depending on source structure.</text>
+
+  <!-- Markup comparison -->
+  <rect x="520" y="100" width="520" height="200" rx="12" fill="#ffffff" stroke="#cfd8e3" filter="url(#soft3)"/>
+  <text x="780" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#1565c0">Same Heading, Two Encodings</text>
+  <rect x="545" y="146" width="470" height="58" rx="6" fill="#fdecea" stroke="#f5c6c0"/>
+  <text x="558" y="167" font-size="11.5" font-weight="700" fill="#c0392b">HTML — ~12 tokens</text>
+  <text x="558" y="190" font-size="12" font-family="monospace" fill="#7a4040">&lt;h2 class="mw-headline" id="intro"&gt;Intro&lt;/h2&gt;</text>
+  <rect x="545" y="218" width="470" height="58" rx="6" fill="#e8f5e9" stroke="#bfe3c2"/>
+  <text x="558" y="239" font-size="11.5" font-weight="700" fill="#2e7d32">Markdown — ~3 tokens</text>
+  <text x="558" y="262" font-size="12" font-family="monospace" fill="#2c5e2f">## Intro</text>
+
+  <!-- Benefits row -->
+  <rect x="520" y="320" width="520" height="100" rx="12" fill="#ffffff" stroke="#cfd8e3" filter="url(#soft3)"/>
+  <text x="780" y="346" text-anchor="middle" font-size="15" font-weight="700" fill="#1565c0">Three Compounding Benefits</text>
+  <g font-size="12" fill="#33424f">
+    <circle cx="585" cy="382" r="16" fill="#e3f2fd"/><text x="585" y="387" text-anchor="middle" font-weight="700" fill="#1565c0">£</text>
+    <text x="585" y="412" text-anchor="middle" font-size="11.5">Lower cost</text>
+    <circle cx="780" cy="382" r="16" fill="#ede7f6"/><text x="780" y="387" text-anchor="middle" font-weight="700" fill="#5e35b1">★</text>
+    <text x="780" y="412" text-anchor="middle" font-size="11.5">Better comprehension</text>
+    <circle cx="965" cy="382" r="16" fill="#e8f5e9"/><text x="965" y="387" text-anchor="middle" font-weight="700" fill="#2e7d32">≡</text>
+    <text x="965" y="412" text-anchor="middle" font-size="11.5">One uniform format</text>
+  </g>
+
+  <!-- Pipeline strip -->
+  <rect x="60" y="452" width="980" height="150" rx="12" fill="#ffffff" stroke="#cfd8e3" filter="url(#soft3)"/>
+  <text x="550" y="478" text-anchor="middle" font-size="15" font-weight="700" fill="#1565c0">Position in the AI / Vector Pipeline</text>
+  <g font-size="11.5" fill="#fff" text-anchor="middle" font-weight="700">
+    <rect x="86" y="500" width="130" height="60" rx="8" fill="#90a4ae"/><text x="151" y="526">Mixed source</text><text x="151" y="544" font-weight="400" font-size="10.5">files</text>
+    <rect x="252" y="500" width="150" height="60" rx="8" fill="#1976d2"/><text x="327" y="526">MarkItDown-MCP</text><text x="327" y="544" font-weight="400" font-size="10.5">convert boundary</text>
+    <rect x="438" y="500" width="130" height="60" rx="8" fill="#607d8b"/><text x="503" y="526">Chunking</text><text x="503" y="544" font-weight="400" font-size="10.5">segmentation</text>
+    <rect x="604" y="500" width="130" height="60" rx="8" fill="#5e35b1"/><text x="669" y="526">Embeddings</text><text x="669" y="544" font-weight="400" font-size="10.5">vector tokens</text>
+    <rect x="770" y="500" width="130" height="60" rx="8" fill="#0277bd"/><text x="835" y="526">Vector DB</text><text x="835" y="544" font-weight="400" font-size="10.5">ANN index</text>
+    <rect x="924" y="500" width="92" height="60" rx="8" fill="#c2185b"/><text x="970" y="526">RAG</text><text x="970" y="544" font-weight="400" font-size="10.5">grounded</text>
+  </g>
+  <g stroke="#90a0ad" stroke-width="2" fill="none">
+    <path d="M216 530 L250 530" marker-end="url(#seqArrow3)"/>
+  </g>
+  <defs><marker id="seqArrow3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#90a0ad"/></marker></defs>
+  <g stroke="#90a0ad" stroke-width="2">
+    <line x1="216" y1="530" x2="248" y2="530" marker-end="url(#seqArrow3)"/>
+    <line x1="402" y1="530" x2="434" y2="530" marker-end="url(#seqArrow3)"/>
+    <line x1="568" y1="530" x2="600" y2="530" marker-end="url(#seqArrow3)"/>
+    <line x1="734" y1="530" x2="766" y2="530" marker-end="url(#seqArrow3)"/>
+    <line x1="900" y1="530" x2="920" y2="530" marker-end="url(#seqArrow3)"/>
+  </g>
+  <text x="550" y="588" text-anchor="middle" font-size="11" fill="#7a8a99" font-style="italic">Twenty input formats collapse into one Markdown stream, so every downstream stage handles text only.</text>
+
+  <text x="550" y="640" text-anchor="middle" font-size="10.5" fill="#b0bcc7">Figures are illustrative orders of magnitude. Source: github.com/microsoft/markitdown · MIT licence</text>
+</svg>

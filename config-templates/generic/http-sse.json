@@ -1,0 +1,6 @@
+{
+  "_comment": "Start the server first with: markitdown-mcp --http --host 127.0.0.1 --port 3001",
+  "_streamable_http_endpoint": "http://127.0.0.1:3001/mcp",
+  "_sse_endpoint": "http://127.0.0.1:3001/sse",
+  "_security_note": "No authentication. Bind to localhost only. Place an authenticating proxy in front before any wider exposure."
+}

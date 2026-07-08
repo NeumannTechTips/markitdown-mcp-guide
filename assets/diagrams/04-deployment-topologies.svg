@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 600" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9fc"/><stop offset="1" stop-color="#eef2f8"/></linearGradient>
+    <filter id="soft4" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3a4a5a" flood-opacity="0.16"/></filter>
+    <marker id="dArrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#37474f"/></marker>
+  </defs>
+  <rect width="1180" height="600" fill="url(#bg4)"/>
+  <text x="590" y="44" text-anchor="middle" font-size="24" font-weight="700" fill="#1a2733">Three Deployment Topologies (Technology-Agnostic)</text>
+  <text x="590" y="68" text-anchor="middle" font-size="13" fill="#566573">Pick the transport and runtime that fit your trust boundary and isolation needs</text>
+
+  <!-- A: STDIO native -->
+  <rect x="40" y="100" width="350" height="430" rx="12" fill="#ffffff" stroke="#cfd8e3" filter="url(#soft4)"/>
+  <rect x="40" y="100" width="350" height="44" rx="12" fill="#1565c0"/>
+  <text x="215" y="129" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">A · STDIO (Local, Default)</text>
+  <text x="215" y="170" text-anchor="middle" font-size="12" fill="#7a8a99" font-style="italic">Best for desktops / single-user dev</text>
+  <rect x="75" y="190" width="280" height="70" rx="8" fill="#ede7f6" stroke="#c5b3e6"/>
+  <text x="215" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#5e35b1">MCP Host (AI client)</text>
+  <text x="215" y="244" text-anchor="middle" font-size="11" fill="#5e4a82">Launches server as child process</text>
+  <line x1="215" y1="260" x2="215" y2="290" stroke="#37474f" stroke-width="2" marker-end="url(#dArrow)"/>
+  <text x="285" y="280" text-anchor="middle" font-size="10.5" fill="#566573">stdin/stdout</text>
+  <rect x="75" y="296" width="280" height="70" rx="8" fill="#e3f2fd" stroke="#90caf9"/>
+  <text x="215" y="328" text-anchor="middle" font-size="13" font-weight="700" fill="#1565c0">markitdown-mcp process</text>
+  <text x="215" y="350" text-anchor="middle" font-size="11" fill="#1a4f80">uvx markitdown-mcp</text>
+  <rect x="75" y="392" width="280" height="120" rx="8" fill="#f1f4f8" stroke="#d3dbe5"/>
+  <text x="215" y="414" text-anchor="middle" font-size="12" font-weight="700" fill="#33424f">Characteristics</text>
+  <text x="215" y="436" text-anchor="middle" font-size="11" fill="#44525e">No network surface</text>
+  <text x="215" y="456" text-anchor="middle" font-size="11" fill="#44525e">Zero-config launch</text>
+  <text x="215" y="476" text-anchor="middle" font-size="11" fill="#44525e">Same privileges as user</text>
+  <text x="215" y="496" text-anchor="middle" font-size="11" fill="#2e7d32" font-weight="700">Recommended default</text>
+
+  <!-- B: Container -->
+  <rect x="415" y="100" width="350" height="430" rx="12" fill="#ffffff" stroke="#cfd8e3" filter="url(#soft4)"/>
+  <rect x="415" y="100" width="350" height="44" rx="12" fill="#00796b"/>
+  <text x="590" y="129" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">B · Container (Podman / Docker)</text>
+  <text x="590" y="170" text-anchor="middle" font-size="12" fill="#7a8a99" font-style="italic">Best for isolation / reproducibility</text>
+  <rect x="450" y="190" width="280" height="64" rx="8" fill="#ede7f6" stroke="#c5b3e6"/>
+  <text x="590" y="218" text-anchor="middle" font-size="13" font-weight="700" fill="#5e35b1">MCP Host (AI client)</text>
+  <text x="590" y="240" text-anchor="middle" font-size="11" fill="#5e4a82">command: podman run --rm -i</text>
+  <line x1="590" y1="254" x2="590" y2="278" stroke="#37474f" stroke-width="2" marker-end="url(#dArrow)"/>
+  <rect x="450" y="284" width="280" height="150" rx="8" fill="#e0f2f1" stroke="#9fd3cd" stroke-dasharray="5 4"/>
+  <text x="590" y="306" text-anchor="middle" font-size="12.5" font-weight="700" fill="#00796b">Container boundary</text>
+  <rect x="475" y="320" width="230" height="50" rx="6" fill="#e3f2fd" stroke="#90caf9"/>
+  <text x="590" y="342" text-anchor="middle" font-size="12" font-weight="700" fill="#1565c0">markitdown-mcp:latest</text>
+  <text x="590" y="360" text-anchor="middle" font-size="10.5" fill="#1a4f80">STDIO inside container</text>
+  <rect x="475" y="384" width="230" height="38" rx="6" fill="#fff8e1" stroke="#f0d98a"/>
+  <text x="590" y="408" text-anchor="middle" font-size="11" fill="#8a6d00">Volume mount: -v /data:/workdir</text>
+  <rect x="450" y="448" width="280" height="64" rx="8" fill="#f1f4f8" stroke="#d3dbe5"/>
+  <text x="590" y="470" text-anchor="middle" font-size="11" fill="#44525e">Reference container paths only:</text>
+  <text x="590" y="490" text-anchor="middle" font-size="11" font-family="monospace" fill="#2c5e2f">file:///workdir/report.pdf</text>
+  <text x="590" y="506" text-anchor="middle" font-size="10" fill="#9a3b3b">(not the host path)</text>
+
+  <!-- C: HTTP/SSE -->
+  <rect x="790" y="100" width="350" height="430" rx="12" fill="#ffffff" stroke="#cfd8e3" filter="url(#soft4)"/>
+  <rect x="790" y="100" width="350" height="44" rx="12" fill="#5e35b1"/>
+  <text x="965" y="129" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">C · HTTP / SSE (Localhost)</text>
+  <text x="965" y="170" text-anchor="middle" font-size="12" fill="#7a8a99" font-style="italic">Best for shared local services</text>
+  <rect x="825" y="190" width="280" height="60" rx="8" fill="#ede7f6" stroke="#c5b3e6"/>
+  <text x="965" y="216" text-anchor="middle" font-size="13" font-weight="700" fill="#5e35b1">One or more MCP Hosts</text>
+  <text x="965" y="236" text-anchor="middle" font-size="11" fill="#5e4a82">Connect to a running endpoint</text>
+  <line x1="965" y1="250" x2="965" y2="276" stroke="#37474f" stroke-width="2" marker-end="url(#dArrow)"/>
+  <text x="1045" y="268" text-anchor="middle" font-size="10" fill="#566573">/mcp or /sse</text>
+  <rect x="825" y="282" width="280" height="76" rx="8" fill="#e3f2fd" stroke="#90caf9"/>
+  <text x="965" y="308" text-anchor="middle" font-size="13" font-weight="700" fill="#1565c0">markitdown-mcp --http</text>
+  <text x="965" y="328" text-anchor="middle" font-size="11" fill="#1a4f80">Bound to 127.0.0.1 only</text>
+  <text x="965" y="346" text-anchor="middle" font-size="11" fill="#1a4f80">Streamable HTTP + SSE</text>
+  <rect x="825" y="372" width="280" height="140" rx="8" fill="#fdecea" stroke="#f5c6c0"/>
+  <text x="965" y="396" text-anchor="middle" font-size="12" font-weight="700" fill="#c0392b">Security warning</text>
+  <text x="965" y="418" text-anchor="middle" font-size="11" fill="#7a4040">No authentication built in</text>
+  <text x="965" y="438" text-anchor="middle" font-size="11" fill="#7a4040">Any local process can reach it</text>
+  <text x="965" y="458" text-anchor="middle" font-size="11" fill="#7a4040">Do NOT bind to 0.0.0.0</text>
+  <text x="965" y="478" text-anchor="middle" font-size="11" fill="#7a4040">unless you add a proxy /</text>
+  <text x="965" y="496" text-anchor="middle" font-size="11" fill="#7a4040">auth layer in front</text>
+
+  <text x="590" y="566" text-anchor="middle" font-size="11.5" fill="#7a8a99" font-style="italic">All three expose the identical tool — convert_to_markdown(uri) — so application logic is unchanged across topologies.</text>
+  <text x="590" y="588" text-anchor="middle" font-size="10.5" fill="#b0bcc7">Source: github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp · MIT licence</text>
+</svg>

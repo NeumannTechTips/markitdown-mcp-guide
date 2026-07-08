@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "markitdown": {
+      "command": "podman",
+      "args": [
+        "run", "--rm", "-i",
+        "-v", "/home/user/data:/workdir:Z",
+        "markitdown-mcp:latest"
+      ]
+    }
+  }
+}

@@ -1,0 +1,47 @@
+name: Validate Guide
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate all JSON configuration templates
+        run: |
+          python3 - <<'PY'
+          import json, glob, sys
+          failed = False
+          for path in glob.glob("config-templates/**/*.json", recursive=True):
+              try:
+                  with open(path) as fh:
+                      json.load(fh)
+                  print(f"VALID: {path}")
+              except Exception as exc:
+                  print(f"INVALID: {path} -> {exc}")
+                  failed = True
+          sys.exit(1 if failed else 0)
+          PY
+
+  validate-svg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate diagram SVGs are well-formed XML
+        run: |
+          python3 - <<'PY'
+          import xml.dom.minidom, glob, sys
+          failed = False
+          for path in glob.glob("assets/diagrams/*.svg"):
+              try:
+                  xml.dom.minidom.parse(path)
+                  print(f"VALID: {path}")
+              except Exception as exc:
+                  print(f"INVALID: {path} -> {exc}")
+                  failed = True
+          sys.exit(1 if failed else 0)
+          PY
