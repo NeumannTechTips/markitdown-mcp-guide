@@ -23,7 +23,7 @@ This repository is a practical, vendor-neutral playbook. It explains the archite
 
 ![End-to-end reference architecture](assets/diagrams/01-reference-architecture.svg)
 
-MarkItDown-MCP sits between your messy source artefacts and your AI host. It exposes exactly **one tool**, `convert_to_markdown(uri)`, which any MCP-compatible agent can invoke mid-conversation. The Markdown that flows out is then ready for chunking, embedding, vector storage, and retrieval — a single uniform format regardless of where the data started life.
+MarkItDown-MCP sits between your messy source artefacts and your AI host. It exposes exactly **one tool**, `convert_to_markdown(uri)`, which any MCP-compatible agent can invoke mid-conversation. The Markdown that flows out is then ready for chunking, embedding, vector storage, and retrieval, a single uniform format regardless of where the data started life.
 
 ---
 
@@ -50,7 +50,7 @@ Configuration templates live under [`config-templates/`](config-templates/). Wor
 
 The fastest path uses `uvx`, which fetches and caches the package on first run with no manual virtual environment to manage. This works on Linux, macOS, and Windows.
 
-**Step 1 — Install `uv` (which provides `uvx`).**
+**Step 1. Install `uv` (which provides `uvx`).**
 
 ```bash
 # macOS / Linux
@@ -60,13 +60,13 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-**Step 2 — Confirm the server runs.** This command starts the server in STDIO mode and waits silently for a client; that silence is success. Press `Ctrl+C` to exit.
+**Step 2. Confirm the server runs.** This command starts the server in STDIO mode and waits silently for a client; that silence is success. Press `Ctrl+C` to exit.
 
 ```bash
 uvx markitdown-mcp
 ```
 
-**Step 3 — Register the server with your MCP host.** The canonical entry is identical across most hosts:
+**Step 3. Register the server with your MCP host.** The canonical entry is identical across most hosts:
 
 ```json
 {
@@ -79,7 +79,7 @@ uvx markitdown-mcp
 }
 ```
 
-**Step 4 — Restart your host and ask it to convert a file.**
+**Step 4. Restart your host and ask it to convert a file.**
 
 ```
 Convert file:///absolute/path/to/report.pdf to markdown and summarise the key points.
@@ -95,7 +95,7 @@ That is the whole loop. For per-client details, transport choices, and container
 
 | Property | Detail |
 | --- | --- |
-| **Tool** | `convert_to_markdown(uri)` — the only tool exposed |
+| **Tool** | `convert_to_markdown(uri)`, the only tool exposed |
 | **Accepted URI schemes** | `http:`, `https:`, `file:`, `data:` |
 | **Transports** | STDIO (default), Streamable HTTP, Server-Sent Events (SSE) |
 | **Dependency** | Pins `markitdown[all]`, so every converter ships with it |
@@ -105,7 +105,7 @@ That is the whole loop. For per-client details, transport choices, and container
 
 Supported source formats include PDF, Word (`.docx`), PowerPoint (`.pptx`), Excel (`.xlsx`, `.xls`), images (with EXIF and OCR), audio (with transcription), HTML, CSV, JSON, XML, EPUB, Outlook `.msg`, ZIP archives (processed recursively), and YouTube URLs.
 
-> **Scope note.** The MCP tool deliberately exposes a single URI parameter. The library's advanced features — large language model image captioning, Azure Document Intelligence, and third-party plugins — do not cross the MCP boundary. If you need those, drive the Python library directly. This minimalism is a design strength: the model can never pick the wrong tool, and there is nothing to misconfigure.
+> **Scope note.** The MCP tool deliberately exposes a single URI parameter. The library's advanced features, meaning large language model image captioning, Azure Document Intelligence and third-party plugins, do not cross the MCP boundary. If you need those, drive the Python library directly. This minimalism is a design strength: the model can never pick the wrong tool, and there is nothing to misconfigure.
 
 ---
 
@@ -127,8 +127,27 @@ This documentation is released under the [MIT Licence](LICENSE), matching the up
 
 ## References and further reading
 
-- Microsoft MarkItDown repository — https://github.com/microsoft/markitdown
-- MarkItDown-MCP package source — https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp
-- MarkItDown-MCP on PyPI — https://pypi.org/project/markitdown-mcp/
-- Model Context Protocol specification — https://modelcontextprotocol.io
-- MCP Inspector tooling — https://github.com/modelcontextprotocol/inspector
+- Microsoft MarkItDown repository: https://github.com/microsoft/markitdown
+- MarkItDown-MCP package source: https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp
+- MarkItDown-MCP on PyPI: https://pypi.org/project/markitdown-mcp/
+- Model Context Protocol specification: https://modelcontextprotocol.io
+- MCP Inspector tooling: https://github.com/modelcontextprotocol/inspector
+
+---
+
+## Disclaimer
+
+General information only, offered as a community contribution rather than as professional advice. The views here are the author's own and are not those of any employer or client.
+
+This guide asks you to install packages and to grant an AI client access to tools that can read files on your machine. Understand what a tool can reach before you enable it, and do not point it at anything sensitive while you are still testing.
+
+No warranty is given, and no responsibility is accepted for any outcome. Full version: [DISCLAIMER.md](https://github.com/NeumannTechTips/neumanntechtips-resources/blob/main/DISCLAIMER.md)
+
+---
+
+## More from NeumannTechTips
+
+This guide comes out of the work behind **[NeumannTechTips](https://www.youtube.com/@NeumannTechTips)**, a channel on practical AI for people who have to make it work inside a real organisation.
+
+- 📺 **[youtube.com/@NeumannTechTips](https://www.youtube.com/@NeumannTechTips)** · a new video every other Thursday
+- 📚 **[neumanntechtips-resources](https://github.com/NeumannTechTips/neumanntechtips-resources)** · free prompt packs and checklists, licensed CC BY 4.0, no sign up
